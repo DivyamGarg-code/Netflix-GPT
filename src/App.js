@@ -1,10 +1,9 @@
 import './App.css';
+import Body from './components/Body';
 
 function App() {
   return (
-    <div className="text-lg font-bold underline">
-      Let's Build Netflix GPT
-    </div>
+   <Body/>
   );
 }
 
