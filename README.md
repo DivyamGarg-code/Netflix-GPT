@@ -15,7 +15,10 @@
 - After User Sign In / Sign Up storing the user information to redux store and navigating to the browse page
 - Creating Redux Store with userSlice
 - Use the onAuthStateChange API which will just act like event listener whenever sign in/sign up/sign out ie authentication related task this api will keep the track [called automatically] 
-
+- TestCase: If user is not logged in Redirect/browse to login page and vice-versa
+- Unsubscribe to the onAuthStateChange callback
+- Register TMDB API & create an app and get the access token
+- Get Data from TMDB "now playing" movies list API
 # Features
 
 - Login/SignUp
@@ -31,3 +34,4 @@
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
+

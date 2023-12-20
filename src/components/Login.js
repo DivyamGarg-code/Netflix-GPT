@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../utils/userSlice';
+import { User_Avatar } from '../utils/constants';
 
 function Login() {
   const name = useRef(null);
@@ -16,7 +17,6 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const userData=useSelector((store)=>console.log(store.user));
   const toggleLoginState = () => {
     if (loginState === "Login") {
       SetloginState("Sign Up");
@@ -48,12 +48,10 @@ function Login() {
             const user = userCredential.user;
             // Update the user profile
             updateProfile(user, {
-              displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/77746511?v=4"
+              displayName: name.current.value, photoURL:User_Avatar
             }).then(() => {
               // Update the redux store
-              const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-              navigate("/browse");
+             
               // Profile updated!
             }).catch((error) => {
               setErrorMessage(error.message);
@@ -72,9 +70,6 @@ function Login() {
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-            navigate("/browse");
           })
           .catch((error) => {
             const errorCode = error.code;
