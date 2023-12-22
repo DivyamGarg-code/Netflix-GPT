@@ -19,6 +19,11 @@
 - Unsubscribe to the onAuthStateChange callback
 - Register TMDB API & create an app and get the access token
 - Get Data from TMDB "now playing" movies list API
+- Create Movie Slice 
+- Update Store with movies data
+- Embed the youtube video
+-
+
 # Features
 
 - Login/SignUp
