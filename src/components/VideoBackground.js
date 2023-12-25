@@ -6,11 +6,11 @@ function VideoBackground({ movieId }) {
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
   useMovieTrailer(movieId);
   const videoSrc = trailerVideo?.key
-    ? `https://www.youtube.com/embed/${trailerVideo.key}?&autoplay=1&mute=1&rel=0&controls=0`
+    ? `https://www.youtube.com/embed/${trailerVideo.key}?&autoplay=1&mute=1&rel=0&controls=0&loop=1`
     : '';
   return (
     // fetch the trailer video and updating the store with trailer video data
-    <div className='w-screen h-screen bg-opacity-75'>
+    <div className='w-screen h-screen opacity-75'>
       {videoSrc && (
         <iframe
           className='w-full aspect-video'
