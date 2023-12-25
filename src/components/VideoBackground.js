@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { useMovieTrailer } from '../hooks/useMovieTrailer';
 
@@ -10,7 +10,7 @@ function VideoBackground({ movieId }) {
     : '';
   return (
     // fetch the trailer video and updating the store with trailer video data
-    <div className='w-screen h-screen'>
+    <div className='w-screen h-screen bg-opacity-75'>
       {videoSrc && (
         <iframe
           className='w-full aspect-video'

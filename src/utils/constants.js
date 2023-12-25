@@ -10,35 +10,4 @@ export const API_options = {
     }
 };
 
-export const user=[
-    {
-        id:"92",
-        name:"Maude Martin",
-        email:"",
-        country:""
-    },
-    {
-        id:"52",
-        name:"Ollie Graham",
-        email:"",
-        country:""
-    },
-    {
-        id:"31",
-        name:"Brian Holloway",
-        email:"",
-        country:""
-    },
-    {
-        id:"31",
-        name:"Emma Hunt",
-        email:"",
-        country:""
-    },
-    {
-        id:"21",
-        name:"Jesus Summers",
-        email:"",
-        country:""
-    },
-]
+export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500";
