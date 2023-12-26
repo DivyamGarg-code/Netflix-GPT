@@ -3,10 +3,7 @@ import Header from './Header'
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { addUser } from '../utils/userSlice';
-import { User_Avatar } from '../utils/constants';
+import { User_Avatar,Bg_URL } from '../utils/constants';
 
 function Login() {
   const name = useRef(null);
@@ -15,8 +12,6 @@ function Login() {
   const [loginState, SetloginState] = useState("Login");
   const [passwordState, setPasswordState] = useState("Hide");
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const toggleLoginState = () => {
     if (loginState === "Login") {
       SetloginState("Sign Up");
@@ -24,12 +19,6 @@ function Login() {
       SetloginState("Login");
     }
   }
-  const handleUserInfo = () => {
-    // console.log(email.current.value, password.current.value);
-    const message = checkValidData(email.current.value, password.current.value);
-    setErrorMessage(message);
-  }
-
   const togglePassword = () => {
     setPasswordState(passwordState === "Hide" ? "Show" : "Hide");
   }
@@ -48,10 +37,10 @@ function Login() {
             const user = userCredential.user;
             // Update the user profile
             updateProfile(user, {
-              displayName: name.current.value, photoURL:User_Avatar
+              displayName: name.current.value, photoURL: User_Avatar
             }).then(() => {
               // Update the redux store
-             
+
               // Profile updated!
             }).catch((error) => {
               setErrorMessage(error.message);
@@ -70,6 +59,15 @@ function Login() {
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            updateProfile(user, {
+              displayName: name.current.value, photoURL: User_Avatar
+            }).then(() => {
+              // Update the redux store
+
+              // Profile updated!
+            }).catch((error) => {
+              setErrorMessage(error.message);
+            });
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -83,7 +81,7 @@ function Login() {
   return (
     <div className='relative w-full'>
       <Header />
-      <img className="w-screen min-h-screen object-cover" src="https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/c5af601a-6657-4531-8f82-22e629a3795e/IN-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="bg" />
+      <img className="w-screen min-h-screen object-cover" src={Bg_URL} alt="bg" />
       <form className='w-3/12 bg-black bg-opacity-80 h-fit absolute z-10 top-1/4 left-2/4 translate-x-[-50%] flex flex-col p-5 rounded-sm gap-6'>
         <h1 className='p-2 font-bold text-2xl text-white'>{loginState === "Login" ? "Login" : "Sign Up"}</h1>
         {loginState === "Sign Up" ?

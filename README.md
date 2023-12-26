@@ -22,7 +22,9 @@
 - Create Movie Slice 
 - Update Store with movies data
 - Embed the youtube video
--
+- GPT Search Bar 
+- Multi Language Features 
+- Integrated GPT API's
 
 # Features
 

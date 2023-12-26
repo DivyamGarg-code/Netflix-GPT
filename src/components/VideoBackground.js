@@ -4,7 +4,7 @@ import { useMovieTrailer } from '../hooks/useMovieTrailer';
 
 function VideoBackground({ movieId }) {
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
-  useMovieTrailer(movieId);
+  useMovieTrailer(movieId); // This will add the trailerVideo object in the redux store
   const videoSrc = trailerVideo?.key
     ? `https://www.youtube.com/embed/${trailerVideo.key}?&autoplay=1&mute=1&rel=0&controls=0&loop=1`
     : '';
