@@ -24,7 +24,7 @@
 - Embed the youtube video
 - GPT Search Bar 
 - Multi Language Features 
-- Integrated GPT API's
+- Integrated Rapid GPT API's
 
 # Features
 
