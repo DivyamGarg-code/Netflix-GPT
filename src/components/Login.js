@@ -88,7 +88,7 @@ function Login() {
     <div className='relative w-full'>
       <Header />
       <img className="w-screen min-h-screen object-cover" src={Bg_URL} alt="bg" />
-      <form className='w-3/12 bg-black bg-opacity-80 h-fit absolute z-10 top-1/4 left-2/4 translate-x-[-50%] flex flex-col p-5 rounded-sm gap-6'>
+      <form className='w-full max-w-[400px] bg-black bg-opacity-80 h-fit absolute z-10 top-1/4 left-2/4 translate-x-[-50%] flex flex-col p-5 rounded-sm gap-6'>
         <h1 className='p-2 font-bold text-2xl text-white'>{loginState === "Login" ? "Login" : "Sign Up"}</h1>
         {loginState === "Sign Up" ?
           <input
