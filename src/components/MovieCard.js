@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux'
 import { addMainMovie } from '../utils/moviesSlice';
 
 function MovieCard({ movie }) {
-  const {poster_path } = movie;
+  const { poster_path } = movie;
   const dispatch = useDispatch();
   const handleOnClick = () => {
     dispatch(addMainMovie(movie));
   }
   return (poster_path &&
-    <div className='w-[150px] h-[180px] md:w-[200px] md:h-[300px] cursor-pointer' onClick={handleOnClick}>
+    <div className='w-[150px] h-[180px] cursor-pointer md:w-[200px] md:h-[300px]' onClick={handleOnClick}>
       <img className="w-full h-full bg-cover" src={IMG_CDN_URL + poster_path} alt="error" />
     </div>
   )

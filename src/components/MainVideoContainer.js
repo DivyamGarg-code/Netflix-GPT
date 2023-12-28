@@ -10,7 +10,7 @@ const MainVideoContainer = () => {
     const { original_title, overview, id } = mainMovie;
     // console.log(original_title,overview,id);
     return (
-        <div >
+        <div className='flex flex-col-reverse md:inline-block'>
             <VideoTitle title={original_title} overview={overview} />
             <VideoBackground movieId={id} />
         </div>
