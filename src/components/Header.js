@@ -8,7 +8,7 @@ import { LOGO } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { supported_languages  } from '../utils/languageConstants';
 import { changeLanguage } from '../utils/configSlice';
-
+import { User_Avatar } from '../utils/constants';
 function Header() {
   const userInfo = useSelector((store) => store.user);
   const showGptsearch=useSelector((store)=>store.gpt.showGptSearch);
@@ -54,7 +54,7 @@ function Header() {
             })}
           </select>}
           <button className='p-2 h-fit bg-gray-400 rounded-md bg-gradient-to-r from-gray-300' onClick={()=>{dispatch(toggleGptSearchView())}}>{!showGptsearch?"GPT Search":"Homepage"}</button>
-          <img src={userInfo.photoURL} className="w-9" alt="error" />
+          <img src={User_Avatar} className="w-9" alt="error" />
           <button className='p-2 h-fit bg-gray-400 rounded-md bg-gradient-to-r from-gray-300' onClick={handleSignOut}>Sign Out</button>
         </div> : ""}
     </div>
