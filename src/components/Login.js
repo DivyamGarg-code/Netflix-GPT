@@ -3,12 +3,13 @@ import Header from './Header'
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { User_Avatar,Bg_URL } from '../utils/constants';
+import { User_Avatar, Bg_URL } from '../utils/constants';
 
 function Login() {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const [loader, setLoader] = useState(false);
   const [loginState, SetloginState] = useState("Login");
   const [passwordState, setPasswordState] = useState("Hide");
   const [errorMessage, setErrorMessage] = useState(null);
@@ -29,6 +30,7 @@ function Login() {
 
     // If the error message is null then proceed further
     if (message === null) {
+      setLoader(true);
       // Sign Up logic
       if (loginState === "Sign Up") {
         createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -40,21 +42,23 @@ function Login() {
               displayName: name.current.value, photoURL: User_Avatar
             }).then(() => {
               // Update the redux store
-
+              setLoader(false);
               // Profile updated!
             }).catch((error) => {
               setErrorMessage(error.message);
+              setLoader(false);
             });
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
             setErrorMessage(errorCode + '-' + errorMessage);
             console.log(errorMessage);
+            setLoader(false);
           });
 
       } else { // Sign In logic
+
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
           .then((userCredential) => {
             // Signed in 
@@ -63,10 +67,11 @@ function Login() {
               displayName: name.current.value, photoURL: User_Avatar
             }).then(() => {
               // Update the redux store
-
+              setLoader(false);
               // Profile updated!
             }).catch((error) => {
               setErrorMessage(error.message);
+              setLoader(false);
             });
           })
           .catch((error) => {
@@ -74,6 +79,7 @@ function Login() {
             const errorMessage = error.message;
             setErrorMessage(errorCode + '-' + errorMessage);
             console.log(errorMessage);
+            setLoader(false);
           });
       }
     }
@@ -120,11 +126,12 @@ function Login() {
 
         {errorMessage !== null ? <p className='text-red-600'>{errorMessage}</p> : ""}
 
-        <button
-          className='p-2 bg-red-600 rounded-sm hover:bg-red-700 font-bold text-xl w-full'
-          onClick={handleSubmit}>
-          {loginState === "Login" ? "Login" : "Sign Up"}
-        </button>
+        {loader ? <div className='flex justify-center items-center p-2 bg-red-600 rounded-sm hover:bg-red-700 font-bold text-xl w-full'>Loading...</div> :
+          <button
+            className='p-2 bg-red-600 rounded-sm hover:bg-red-700 font-bold text-xl w-full'
+            onClick={handleSubmit}>
+            {loginState === "Login" ? "Login" : "Sign Up"}
+          </button>}
 
         <span
           className='text-white p-2 cursor-pointer'

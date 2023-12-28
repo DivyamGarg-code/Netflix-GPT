@@ -54,7 +54,7 @@ function Header() {
             })}
           </select>}
           <button className='p-2 h-fit bg-gray-400 rounded-md bg-gradient-to-r from-gray-300' onClick={()=>{dispatch(toggleGptSearchView())}}>{!showGptsearch?"GPT Search":"Homepage"}</button>
-          <img src={userInfo.photoURL} className="w-11" alt="error" />
+          <img src={userInfo.photoURL} className="w-9" alt="error" />
           <button className='p-2 h-fit bg-gray-400 rounded-md bg-gradient-to-r from-gray-300' onClick={handleSignOut}>Sign Out</button>
         </div> : ""}
     </div>

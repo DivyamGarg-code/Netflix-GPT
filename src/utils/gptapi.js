@@ -32,7 +32,7 @@ export const gptapi = async (searchQuery) => {
             'X-RapidAPI-Host': 'open-ai-chatgpt.p.rapidapi.com'
         },
         body: JSON.stringify({
-            "query": `Act as a Movie Recommendation system and suggest some movies for the query" + ${searchQuery} + "only give me 5 movie names seperated by comma in this format only. Example Format : ["batman", "spider man", "king kong", "godzilla", "hera pheri"]`
+            "query": `Act as a Movie Recommendation system and suggest some movies for the query" + ${searchQuery} + "only give me maximum 5 movie names seperated by comma in this format only. Example Format : ["batman", "spider man", "king kong", "godzilla", "hera pheri"]`
         })
     };
     const getMovieResults = async () => {

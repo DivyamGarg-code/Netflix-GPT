@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useMovieTrailer } from '../hooks/useMovieTrailer';
 
-function VideoBackground({ movieId }) {
+function VideoBackground({ movieId }){
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
   useMovieTrailer(movieId); // This will add the trailerVideo object in the redux store
   const videoSrc = trailerVideo?.key
@@ -25,5 +25,4 @@ function VideoBackground({ movieId }) {
   )
 }
 
-export default VideoBackground
-
+export default VideoBackground;
