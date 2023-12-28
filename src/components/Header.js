@@ -44,7 +44,7 @@ function Header() {
   },[]);
 
   return (
-    <div className='absolute z-10 px-12 py-2 bg-gray-900 bg-gradient-to-r from-black w-screen flex justify-between items-center shadow-md'>
+    <div className='absolute z-10 px-12 py-2 bg-gray-900 bg-gradient-to-r from-black w-screen flex flex-col justify-center items-center shadow-md md:flex-row justify-between '>
       <img className="w-[142px]" src={LOGO} alt="logo" />
       {userInfo !== null ?
         <div className='flex justify-center items-center gap-2'>

@@ -16,7 +16,7 @@ function GptMovieSuggestions() {
       {movieNames.map((movie, index) => {
         return <MovieList key={`${movie}${index}`} title={capitalizeWords(movie)} movies={movieResults[index]} />
       })}
-    </div> : <div className='text-xl text-white font-bold'>No Results</div>
+    </div> : <div className='text-xl text-white'>No Results</div>
   )
 }
 

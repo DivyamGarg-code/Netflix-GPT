@@ -10,7 +10,7 @@ function MovieCard({ movie }) {
     dispatch(addMainMovie(movie));
   }
   return (poster_path &&
-    <div className='w-[200px] h-[300px] cursor-pointer' onClick={handleOnClick}>
+    <div className='w-[150px] h-[180px] md:w-[200px] md:h-[300px] cursor-pointer' onClick={handleOnClick}>
       <img className="w-full h-full bg-cover" src={IMG_CDN_URL + poster_path} alt="error" />
     </div>
   )

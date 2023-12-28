@@ -10,7 +10,7 @@ function VideoBackground({ movieId }){
     : '';
   return (
     // fetch the trailer video and updating the store with trailer video data
-    <div className='w-screen h-screen opacity-75'>
+    <div className='w-screen pt-[90px] opacity-75 md:pt-[0px]'>
       {videoSrc && (
         <iframe
           className='w-full aspect-video'

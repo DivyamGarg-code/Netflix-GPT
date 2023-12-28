@@ -18,7 +18,7 @@ const GptSearchBar = () => {
     }
     return (
         <div className='flex flex-col gap-5'>
-            <span className='text-white text-3xl font-bold'>GPT Search Bar</span>
+            <span className='text-white text-2xl font-bold md:text-3xl'>GPT Search Bar</span>
             <form className='flex gap-2' onSubmit={(e) => { e.preventDefault() }}>
                 <input ref={searchText} type="text" className='w-full max-w-[400px] p-2 rounded-md' placeholder={lang[identifier].gptSearchPlaceholder} />
                 {searchLoader?<div className='bg-red-700 p-3 text-white rounded-md cursor-not-allowed'>Loading...</div>:
