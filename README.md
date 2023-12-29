@@ -54,3 +54,6 @@
 - proper usage of react hooks [useEffect, useState, useRef]
 - Redux Store [This project makes it quite easier to understand and use it well]
 
+# Problems Faced
+- Firebase hoisting not worked [google verification steps not worked] so hoisted on vercel
+- Chat GPT API not worked so I used it indirectly using RapidApi Key
