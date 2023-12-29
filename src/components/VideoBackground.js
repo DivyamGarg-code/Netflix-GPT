@@ -10,8 +10,9 @@ function VideoBackground({ movieId }){
     : '';
   return (
     // fetch the trailer video and updating the store with trailer video data
-    <div className='w-screen pt-[110px] opacity-75 md:pt-[0px] lg:-mt-[120px]'>
-      {videoSrc && (
+
+    <div className='w-screen pt-[110px] opacity-75 md:pt-[0px] lg:mt-[0px]'>
+      {videoSrc?
         <iframe
           className='w-full aspect-video'
           src={videoSrc}
@@ -19,8 +20,9 @@ function VideoBackground({ movieId }){
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
-      )}
+        ></iframe>:
+        <div className='h-[400px] w-screen bg-black md:h-[800px]'></div>
+      }
     </div>
   )
 }

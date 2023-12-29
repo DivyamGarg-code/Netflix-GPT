@@ -44,10 +44,10 @@ function Header() {
   },[]);
 
   return (
-    <div className='absolute z-10 px-12 py-2 bg-gray-900 bg-gradient-to-r from-black w-screen flex flex-col justify-center items-center shadow-md md:flex-row md:justify-between '>
+    <div className='absolute z-10 px-7 py-2 bg-gray-900 bg-gradient-to-r from-black w-screen flex flex-col justify-center items-center shadow-md md:flex-row md:justify-between '>
       <img className="w-[142px]" src={LOGO} alt="logo" />
       {userInfo !== null ?
-        <div className='flex justify-center items-center gap-2'>
+        <div className='flex justify-center it7ms-center gap-2'>
           {showGptsearch && <select className='p-2 rounded-md' onChange={handleLanguageChange}>
             {supported_languages.map((lang)=>{
               return <option key={lang.identifier} value={lang.identifier}>{lang.name}</option> 

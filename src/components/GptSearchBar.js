@@ -8,13 +8,14 @@ const GptSearchBar = () => {
     const dispatch = useDispatch();
     const identifier = useSelector((store) => store.config.lang); // language key
     const searchLoader = useSelector((store) => store.gpt.searchLoader); // language key
+    const userApiKey=useSelector((store)=>store.gpt.userApiKey);
     const searchText = useRef(null);
     const handleGptSearchClick = async () => {
         const searchVal = searchText.current.value;
         dispatch(setSearchLoader(true));
-        const { movieNames, movieResults } = await gptapi(searchVal);
+        const { movieNames, movieResults,errorMessage } = await gptapi(searchVal,userApiKey);
         dispatch(setSearchLoader(true));
-        dispatch(addGptMovieResults({ movieNames: movieNames, movieResults: movieResults }))
+        dispatch(addGptMovieResults({ movieNames: movieNames, movieResults: movieResults,errorMessage:errorMessage }))
     }
     return (
         <div className='flex flex-col gap-5'>
@@ -24,7 +25,6 @@ const GptSearchBar = () => {
                 {searchLoader?<div className='bg-red-700 p-3 text-white rounded-md cursor-not-allowed'>Loading...</div>:
             <button className='bg-red-700 p-3 text-white rounded-md' onClick={handleGptSearchClick}>{lang[identifier].search}</button>}
             </form>
-            {/* {searchedMovies && <MovieList title={`Search Results : ${searchText.current.value}`} movies={searchedMovies} />} */}
         </div>
     )
 }

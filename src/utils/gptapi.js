@@ -2,7 +2,8 @@ import React from 'react'
 import { Gpt_Api_Key } from '../utils/constants';
 import { API_options } from '../utils/constants';
 
-export const gptapi = async (searchQuery) => {
+
+export const gptapi = async (searchQuery,userApiKey) => {
     // Search API......................................
     // This function will return a promise
     const getSearchedMovies = async (movie) => {
@@ -28,24 +29,27 @@ export const gptapi = async (searchQuery) => {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': Gpt_Api_Key,
+            'X-RapidAPI-Key': userApiKey?userApiKey:Gpt_Api_Key,
             'X-RapidAPI-Host': 'open-ai-chatgpt.p.rapidapi.com'
         },
         body: JSON.stringify({
-            "query": `Act as a Movie Recommendation system and suggest some movies for the query" + ${searchQuery} + "only give me at maximum 5 movie names seperated by comma in this format only. Example Format : ["batman", "spider man", "king kong", "godzilla", "hera pheri"]`
+            "query": `Give me some movies for this query" + ${searchQuery} + "only give me at maximum 5 movie names seperated by comma in this format only. Example Format : ["batman", "spider man", "king kong", "godzilla", "hera pheri"]`
         })
     };
     const getMovieResults = async () => {
         const data = await fetch("https://open-ai-chatgpt.p.rapidapi.com/ask", requestOptions);
         const json = await data.json();
         console.log("Movie Results", json.response);
-        const movieNames = extractMovieNames(json.response);
+        const movieNames = json.response?extractMovieNames(json.response):[];
+        const errorMessage=json.message?json.message:null;
         const promiseArray = movieNames.map((movie) => getSearchedMovies(movie));
         // // [promise,promise,promise,promise,promise] Return the List of 5 promises
         const tmdbResults = await Promise.all(promiseArray);
-        return { movieNames: movieNames, movieResults: tmdbResults };
+        return { movieNames: movieNames, movieResults: tmdbResults,errorMessage:errorMessage };
     }
     return getMovieResults();
+    // return { movieNames: [], movieResults: [],errorMessage:"You are not subscribed to this API" };
+    
 
     // const movieNames = ["batman","spiderman"];
     // const promiseArray = movieNames.map((movie) => getSearchedMovies(movie));
