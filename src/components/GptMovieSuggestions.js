@@ -21,11 +21,13 @@ function GptMovieSuggestions() {
     }
     setApiKey(!apiKey);
   }
-  if (!movieNames) return;
 
   if (searchLoader) {
     return <Shimmer />
   }
+  
+  if (!movieNames) return;
+
   return (
     movieNames && movieNames.length !== 0 ?
       <div className='flex flex-col gap-10 py-10'>

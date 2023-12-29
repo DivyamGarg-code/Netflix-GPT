@@ -24,7 +24,7 @@
 - Embed the youtube video
 - GPT Search Bar 
 - Multi Language Features 
-- Integrated Rapid GPT API's
+- Integrated RapidApi [ChatGPT]
 
 # Features
 
@@ -39,6 +39,18 @@
     - MovieSuggestions
       - MovieLists \* N
 - NetflixGPT
-  - Search Bar
+  - Search Bar [Multi language]
   - Movie Suggestions
+
+# Note
+- Also Implemented the feature considering the case if my GPT-Api limit exceed's user can add his/her API key following the given steps so as to test the workflow
+- Movie Suggestions will be based upon GPT model version
+
+# My Learnings
+
+- proper structuring and maintainence of files and folders
+- Firebase Integration for user athentication
+- custom hooks
+- proper usage of react hooks [useEffect, useState, useRef]
+- Redux Store [This project makes it quite easier to understand and use it well]
 
