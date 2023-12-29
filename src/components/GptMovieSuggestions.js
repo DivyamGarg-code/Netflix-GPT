@@ -36,7 +36,7 @@ function GptMovieSuggestions() {
       <div className='text-[18px] text-white flex flex-col gap-2 pb-3'>
         {errorMessage ?
           <>
-            <form className='flex gap-2' onSubmit={(e) => { e.preventDefault() }}>
+            <form className='flex gap-2 text-[16px]' onSubmit={(e) => { e.preventDefault() }}>
               <input type="text" ref={userApiKey} disabled={apiKey} className='w-full max-w-[400px] p-2 rounded-md text-black' placeholder="Enter Your API Key" />
               <button className={`${apiKey ? 'bg-green-700' : 'bg-red-700'} p-3 text-white rounded-md`} onClick={handleApiKeyClick}>{apiKey ? 'Locked' : 'Enter'}</button>
             </form>
